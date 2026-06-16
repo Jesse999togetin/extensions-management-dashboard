@@ -3,7 +3,7 @@
 A clean, high-performance frontend dashboard designed to monitor, filter, and manage browser extensions. This project dynamically renders data from a local JSON configuration file and updates the DOM interface in real-time based on user interaction.
 
 ## 🚀 Live Demo
-[Insert your GitHub Pages or Vercel deployment link here]
+https://jesse999togetin.github.io/extensions-management-dashboard/
 
 ---
 
