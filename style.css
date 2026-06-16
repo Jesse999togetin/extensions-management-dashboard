@@ -1,0 +1,325 @@
+/* ==========================================================================
+   1. GLOBAL RESET & DESIGN SYSTEM VARIABLES
+   ========================================================================== */
+@import url('https://fonts.googleapis.com/css2?family=Noto+Sans:wght@400;500;700&display=swap');
+
+:root {
+    --neutral-900: hsl(227, 75%, 14%);
+    --neutral-800: hsl(226, 25%, 17%);
+    --neutral-700: hsl(225, 23%, 24%);
+    --neutral-600: hsl(226, 11%, 37%);
+    --neutral-200: hsl(217, 61%, 90%);
+    --neutral-0: hsl(200, 60%, 99%);
+    
+    --red-500: hsl(3, 71%, 56%);
+    --bg-gradient: linear-gradient(180deg, #040918 0%, #091540 100%);
+    
+    --badge-active-bg: rgba(46, 213, 115, 0.15);
+    --badge-active-text: #2ed573;
+    --badge-inactive-bg: rgba(142, 142, 147, 0.15);
+    --badge-inactive-text: #8e8e93;
+    
+    --font-main: 'Noto Sans', sans-serif;
+}
+
+/* ==========================================================================
+   LIGHT THEME OVERRIDES
+   ========================================================================== */
+body.light-theme {
+    /* Swap variables to use the official Light Gradient and light theme neutrals */
+    --bg-gradient: linear-gradient(180deg, #EBF2FC 0%, #EEF8F9 100%);
+    --neutral-800: hsl(200, 60%, 99%);   /* Bright white card backgrounds */
+    --neutral-700: hsl(0, 0%, 93%);      /* Light gray borders / buttons */
+    --neutral-600: hsl(0, 0%, 78%);      /* Muted gray hover track states */
+    --neutral-200: hsl(226, 11%, 37%);   /* Dark gray text for copy readability */
+    --neutral-0: hsl(227, 75%, 14%);     /* Deep dark blue for clear headings */
+}
+
+/* Fix the light mode theme button icon background layout */
+body.light-theme .theme-toggle {
+    background-color: hsl(0, 0%, 93%);
+    border-color: hsl(0, 0%, 78%);
+}
+
+*{
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+body {
+    background: var(--bg-gradient);
+    color: var(--neutral-200);
+    font-family: var(--font-main);
+    font-size: 16px;
+    min-height: 100vh;
+    padding: 4rem 2rem;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+/* ==========================================================================
+   2. PAGE STRUCTURAL LAYOUTS (The Grid & Flex Alignments)
+   ========================================================================== */
+.dashboard-wrapper {
+    width: 100%;
+    max-width: 1100px;
+}
+
+/* New Navigation Top-Bar Layout */
+.top-navbar {
+    width: 100%;
+    background-color: var(--neutral-800);
+    border: 1px solid var(--neutral-700);
+    border-radius: 15px;
+    padding: 1rem 1.5rem;
+    display: flex;
+    justify-content: space-between; /* Logo on left, toggle on right */
+    align-items: center;
+    margin-bottom: 3rem;
+}
+
+.nav-logo-area {
+    display: flex;
+    align-items: center;
+    gap: 0.75rem;
+    font-weight: 700;
+    color: var(--neutral-0);
+    font-size: 1.2rem;
+}
+
+
+.theme-toggle {
+    background: transparent;
+    border: 1px solid var(--neutral-700);
+    color: var(--neutral-0);
+    width: 40px;
+    height: 40px;
+    border-radius: 5%;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: background-color 0.2s;
+}
+
+.theme-toggle:hover {
+    background-color: var(--neutral-700);
+     border-color: var(--red-500);
+}
+
+/* Header Row: Title on Left, Controls on Right */
+.dashboard-header {
+    display: flex;
+    justify-content: space-between; 
+    align-items: center;
+    margin-bottom: 2rem;
+    width: 100%;
+}
+
+.dashboard-header h2 {
+    color: var(--neutral-0);
+    font-size: 1.75rem;
+    font-weight: 700;
+}
+
+/* Tab Filter Controls Group */
+.filter-controls {
+    display: flex;
+    gap: 0.75rem;
+}
+
+.filter-btn {
+    background-color: var(--neutral-700);
+    border: 1px solid transparent;
+    color: var(--neutral-200);
+    padding: 0.5rem 1.2rem;
+    border-radius: 20px;
+    cursor: pointer;
+    font-family: var(--font-main);
+    font-weight: 500;
+    transition: all 0.2s ease;
+}
+
+.filter-btn:hover {
+    background-color: var(--neutral-600);
+    color: var(--neutral-0);
+    border-color: var(--red-500);
+}
+
+.filter-btn.active {
+    background-color: var(--red-500);
+    color: var(--neutral-0);
+}
+
+/* Responsive 4x3 Grid System */
+.grid-container {
+    display: grid;
+    grid-template-columns: 1fr; /* 1 column on mobile devices */
+    gap: 1.5rem;
+    width: 100%;
+}
+
+@media (min-width: 768px) {
+    .grid-container {
+        grid-template-columns: repeat(3, 1fr); /* Exactly 3 columns on desktop screens */
+    }
+}
+
+@media (max-width: 600px) {
+    .dashboard-header {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 1rem;
+    }
+    .filter-controls {
+        width: 100%;
+        justify-content: space-between;
+    }
+}
+
+/* ==========================================================================
+   3. INDIVIDUAL ELEMENT CARD STYLES
+   ========================================================================== */
+.extension-card {
+    background-color: var(--neutral-800);
+    border: 1px solid var(--neutral-700);
+    border-radius: 12px;
+    padding: 1.5rem;
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+    transition: transform 0.2s ease, border-color 0.2s ease;
+}
+
+.extension-card:hover {
+    transform: translateY(-2px);
+    cursor: pointer;
+    
+}
+
+.card-header {
+    display: flex;
+    align-items: flex-start;
+    gap: 1rem;
+}
+
+.extension-logo {
+    width: 48px;
+    height: 48px;
+    border-radius: 8px;
+    object-fit: contain;
+}
+
+.title-area {
+    display: flex;
+    flex-direction: column;
+    gap: 0.25rem;
+}
+
+.title-area h3 {
+    color: var(--neutral-0);
+    font-size: 1.1rem;
+    font-weight: 600;
+}
+
+.status-badge {
+    font-size: 0.75rem;
+    font-weight: bold;
+    padding: 0.2rem 0.6rem;
+    border-radius: 20px;
+    width: max-content;
+}
+
+.status-badge.active {
+    background-color: var(--badge-active-bg);
+    color: var(--badge-active-text);
+}
+
+.status-badge.inactive {
+    background-color: var(--badge-inactive-bg);
+    color: var(--badge-inactive-text);
+}
+
+.card-description {
+    color: var(--neutral-200);
+    opacity: 0.8;
+    font-size: 0.95rem;
+    line-height: 1.6;
+    flex-grow: 1;
+}
+
+.remove-btn {
+    background: transparent;
+    border: 1px solid var(--neutral-700);
+    color: var(--neutral-200);
+    padding: 0.5rem 1.2rem;
+    border-radius: 16px;
+    cursor: pointer;
+    font-family: var(--font-main);
+    font-weight: 500;
+    align-self: flex-start;
+    transition: all 0.2s ease;
+}
+
+.remove-btn:hover {
+    background-color: rgba(235, 93, 86, 0.1);
+    color: var(--red-500);
+    border-color: var(--red-500);
+}
+
+/* Container to keep button on left, toggle on right */
+.card-footer {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-top: auto; /* Ensures it alignment-locks perfectly at the bottom */
+}
+
+/* 1. Hide the default, ugly browser checkbox */
+.switch {
+    position: relative;
+    display: inline-block;
+    width: 44px;
+    height: 22px;
+}
+
+.switch input {
+    opacity: 0;
+    width: 0;
+    height: 0;
+}
+
+/* 2. The Slider Background track (OFF State) */
+.slider {
+    position: absolute;
+    cursor: pointer;
+    top: 0; left: 0; right: 0; bottom: 0;
+    background-color: var(--neutral-600);
+    border-radius: 34px;
+    transition: 0.3s ease;
+}
+
+/* 3. The sliding circle white knob inside the switch */
+.slider:before {
+    position: absolute;
+    content: "";
+    height: 16px;
+    width: 16px;
+    left: 3px;
+    bottom: 3px;
+    background-color: white;
+    border-radius: 50%;
+    transition: 0.3s ease;
+}
+
+/* 4. ON State: Change track color when checkbox is checked */
+.switch input:checked + .slider {
+    background-color: var(--red-500); /* Glows with our design accent color! */
+}
+
+/* 5. ON State: Move the white knob to the right side */
+.switch input:checked + .slider:before {
+    transform: translateX(22px);
+}

@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="style.css">
+  <link rel="icon" type="image/png" sizes="32x32" href="./assets/images/favicon-32x32.png">
+  
+  <title>Frontend Mentor | Browser extensions manager UI</title>
+</head>
+<body>
+
+  <div class="dashboard-wrapper">
+    
+    <nav class="top-navbar">
+      <div class="nav-logo-area">
+        <img src="assets/images/logo.svg" alt="Extensions Manager Logo">
+      </div>
+      <button id="theme-toggle-btn" class="theme-toggle" aria-label="Toggle Theme">
+        <span class="theme-icon">
+          <img src="assets/images/icon-sun.svg" alt="Theme Icon">
+        </span>
+      </button>
+    </nav>
+
+    <main class="dashboard-main">
+      
+      <header class="dashboard-header">
+        <h2>Extensions List</h2>
+        
+        <div class="filter-controls">
+          <button class="filter-btn active" data-filter="all">All</button>
+          <button class="filter-btn" data-filter="active">Active</button>
+          <button class="filter-btn" data-filter="inactive">Inactive</button>
+        </div>
+      </header>
+
+      <section id="extension-grid" class="grid-container"></section>
+
+    </main>
+  </div>
+
+  <footer class="attribution">
+    Challenge by <a href="https://www.frontendmentor.io?ref=challenge" target="_blank" rel="noopener noreferrer">Frontend Mentor</a>. <br>
+    Coded by <a href="https://github.com/jesse999togetin" target="_blank" rel="noopener noreferrer">Jesse Chidinwaorgu/a>.
+  </footer>
+
+  <script src="script.js"></script>
+</body>
+</html>
