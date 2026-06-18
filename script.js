@@ -24,14 +24,14 @@ fetch('data.json')
                 <button class="remove-btn">Remove</button>
                 
                 <label class="switch">
-                    <input type="checkbox" class="toggle-status" ${extension.isActive ? 'checked' : ''}>
+                    <input type="checkbox" class="toggle-status" aria-label="Toggle extension activation status" ${extension.isActive ? 'checked' : ''}>
                     <span class="slider"></span>
                 </label>
             </div>
         `;
 
         // Action 1: Remove Card Functional Element
-        const removeBtn = card.querySelector('.remove-btn');
+        const removeBtn = card.querySelector('.remove-btn'); 
         removeBtn.addEventListener('click', () => {
             card.remove();
         });
